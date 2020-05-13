@@ -34,19 +34,43 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-# print(room)
+#My Notes
+# when the game first runs, start with an intro and then an input for the player to enter a direction n,s,e,w and that takes them into the room
+
+
+
+
+# input("Do you wish to enter the castle? Press Q to quit, if your soul is crusty and lacks adventure , or N to continue into the Foyer. ")
 #
 # Main
 #
 # Make a new player object that is currently in the 'outside' room.
-player = room['outside']
+print("You wake up from a nap to find yourself somehow outside of a slightly ooky cave, with something glinting and gleaming faintly in the dusky half-light inside. You are now having An Adventure!")
+player_start = Room("outside", ["Outside Cave Entrance",
+                     "North of you, the cave mount beckons"])
+player_name = input("Welcome player! Please give us your name: ")
+print(f"Welcome, {player_name}! You are currently {player_start}. Do you wish to continue? Enter Yes or No and press Enter")
+
+
+    # input(f"Great! We knew you were the adventurous type, {player_name}! Please choose N to enter the cave and all the adventure that lies in wait! ")
+
+    # print("We're sorry to see you go, you will now wake up from your nap in your own bed, wondering about that strange dream and that ooky cave forever.")
+
+    # print("Please choose Yes or No to continue the adventure.")
+
+
+
+
 # Write a loop that:
 #
 # * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
+# * Prints the current description (the textwrap module might be useful here)
+
+# input("Where do you want to go next? Select N, S, W, E")
 # * Waits for user input and decides what to do.
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
