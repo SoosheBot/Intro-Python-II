@@ -4,8 +4,8 @@ from player import Player
 # Declare all the rooms
 
 room = {
-    'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+    'outside':  Room("You are outside, looking at a slightly ooky cave entrance, with something glinting and gleaming faintly in the dusky half-light inside.",
+                     "North of you, the cave mount beckons, creepily but irresistibly..."),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
 passages run north and east."""),
@@ -34,39 +34,36 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-#My Notes
-# when the game first runs, start with an intro and then an input for the player to enter a direction n,s,e,w and that takes them into the room
 
-
-
-
-# input("Do you wish to enter the castle? Press Q to quit, if your soul is crusty and lacks adventure , or N to continue into the Foyer. ")
-#
 # Main
 #
 # Make a new player object that is currently in the 'outside' room.
-print("You wake up from a nap to find yourself somehow outside of a slightly ooky cave, with something glinting and gleaming faintly in the dusky half-light inside. You are now having An Adventure!")
-player_start = Room("outside", ["Outside Cave Entrance",
-                     "North of you, the cave mount beckons"])
+
 player_name = input("Welcome player! Please give us your name: ")
-print(f"Welcome, {player_name}! You are currently {player_start}. Do you wish to continue? Enter Yes or No and press Enter")
 
-
-    # input(f"Great! We knew you were the adventurous type, {player_name}! Please choose N to enter the cave and all the adventure that lies in wait! ")
-
-    # print("We're sorry to see you go, you will now wake up from your nap in your own bed, wondering about that strange dream and that ooky cave forever.")
-
-    # print("Please choose Yes or No to continue the adventure.")
-
-
-
-
+player = Player(player_name, room['outside'])
 # Write a loop that:
 #
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here)
 
-# input("Where do you want to go next? Select N, S, W, E")
+directions = {'n': 'n_to', 'N': 'n_to', 's': 's_to', 'S': 's_to', 'e': 'e_to', 'E': 'e_to', 'w': 'w_to', 'W': 'w_to'}
+
+
+while True:
+    print(player.room.name)
+    print(player.room.description)
+
+    choice = input(f'Which way next, {player.name}? ')
+
+    direction = directions[choice]
+    try:
+        player.room = getattr(player.room, direction)
+    
+    except AttributeError:
+        print("Sorry, you can't go that way, try another direction.")
+        
+
 # * Waits for user input and decides what to do.
 #
 # If the user enters a cardinal direction, attempt to move to the room there.

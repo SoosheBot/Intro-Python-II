@@ -2,9 +2,11 @@
 # currently.
 
 class Player:
-    def __init__(self, player_name, current_room):
-        self.player_name = player_name
-        self.current_room = current_room
+    def __init__(self, name, room, items=[]):
+        self.name = name
+        self.room = room
+        self.items = []
     
     def __str__(self):
-        return self.player_name
+        # return self.name
+       return f'{self.name} saunters into {self.room}'

@@ -4,10 +4,11 @@
 from item import Item
 
 class Room:
-    def __init__(self, room_name, room_description):
-        self.room_name = room_name
-        self.room_description = room_description
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
     
     def __str__(self):
-        return self.room_name
+        # return self.name
+       return f'{self.name} is in {self.description}'
 
